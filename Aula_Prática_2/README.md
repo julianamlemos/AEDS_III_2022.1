@@ -9,7 +9,7 @@ Aluna: [Juliana Mara Lemos](https://github.com/julianamlemos)
 Segunda atividade prática:
 Complemento do códico da primeira aula, com o maior grau,menor grau e matriz complementar.
 
-[Exemplo de saída do programa após a execução do mesmo](https://github.com/julianamlemos/AEDS_III_2022.1/Aula_Prática_2/saída.PNG)
+[Exemplo de saída do programa após a execução do mesmo](https://github.com/julianamlemos/AEDS_III_2022.1/blob/main/Aula_Pr%C3%A1tica_2/sa%C3%ADda.PNG)
 
 ### Fontes
 - Notas de Aula - CSI105 Algoritmos e Estruturas de Dados III 2022/1
