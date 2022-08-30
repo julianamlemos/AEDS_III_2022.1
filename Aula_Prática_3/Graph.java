@@ -165,8 +165,63 @@ public class Graph {
         return R;
     }
 
+    public ArrayList<Integer> dfs(int s) { // busca em profundidade
+        // initialization
+        int[] desc = new int[this.countNodes];
+        ArrayList<Integer> S = new ArrayList<>();
+        S.add(s);
+        ArrayList<Integer> R = new ArrayList<>();
+        R.add(s);
+        desc[s] = 1;
+        // main loop
+        while (S.size() > 0) {
+            int u = S.get(S.size() - 1);
+            boolean unstack = true; // desempilhar
+            for (int v = 0; v < this.adjMatrix[u].length; ++v) {
+                if (this.adjMatrix[u][v] != 0 && desc[v] == 0) {
+                    S.add(v);
+                    R.add(v);
+                    desc[v] = 1;
+                    unstack = false;
+                    break;
+                }
+            }
+            if (unstack) {
+                S.remove(S.size() - 1);
+            }
+        }
+        return R;
+    }
+
     public boolean connected() {
         return this.bfs(0).size() == this.countNodes;
+    }
+
+    public boolean nonOriented() {
+        for (int i = 0; i < this.adjMatrix.length; ++i) {
+            for (int j = i + 1; j < this.adjMatrix.length; ++j) {
+                if (this.adjMatrix[i][j] != this.adjMatrix[j][i])
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public ArrayList<Integer> dfsRec(int s) {
+        int[] desc = new int[this.countNodes];
+        ArrayList<Integer> R = new ArrayList<>();
+        dfsRecAux(s, desc, R);
+        return R;
+    }
+
+    public void dfsRecAux(int u, int[] desc, ArrayList<Integer> R) {
+        desc[u] = 1;
+        R.add(u);
+        for (int v = 0; v < this.adjMatrix[u].length; ++v) {
+            if (this.adjMatrix[u][v] != 0 && desc[v] == 0) {
+                dfsRecAux(v, desc, R);
+            }
+        }
     }
 
 }
